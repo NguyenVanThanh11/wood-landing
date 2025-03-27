@@ -1,0 +1,355 @@
+body {
+  background-color: rgb(236, 234, 215);
+}
+/* Hiệu ứng vòng tròn phóng to */
+@keyframes pulseIcon {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.pulse-icon {
+  position: relative;
+}
+
+.pulse-icon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgb(0, 149, 255);
+  border-radius: 50%;
+  animation: pulseIcon 1.5s infinite;
+}
+
+.header-promotion {
+  background: #940303;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 0;
+}
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+.text-center {
+  text-align: center !important;
+}
+
+@keyframes pulseSales {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shadow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+  }
+}
+
+.pulse-shadow-animation-price {
+  animation: pulseSales 1.5s infinite, shadow 1.5s infinite;
+}
+
+.gradient-bg {
+  background: linear-gradient(180deg, #cd853f, #654321);
+}
+.countdown-box {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+a {
+  cursor: pointer;
+}
+.spin {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #3498db; /* Màu của spin */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Overlay để làm mờ nền khi spin đang chạy */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8); /* Màu nền mờ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Đảm bảo overlay hiển thị trên tất cả các phần tử khác */
+}
+
+/* Popup Container */
+.popup {
+  width: 90%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1001; /* Đảm bảo popup hiển thị trên overlay */
+  display: none; /* Ẩn popup ban đầu */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Overlay để làm mờ nền khi popup hiển thị */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
+  display: none; /* Ẩn overlay ban đầu */
+  z-index: 1000; /* Đảm bảo overlay hiển thị trên tất cả các phần tử khác */
+}
+
+/* Hiệu ứng fadeIn cho popup */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Hiệu ứng fadeOut cho popup */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+}
+
+/* Nút đóng popup */
+.popup button {
+  background: green;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.popup button:hover {
+  background: darkgreen;
+}
+
+.color-yellow {
+  color: yellow;
+}
+
+.nav-link {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.nav-link-active {
+  background-color: #fbbf24;
+  color: white;
+}
+
+.nav-link:hover {
+  transform: scale(1.05);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+.animate-shake {
+  animation: shake 0.5s ease-in-out infinite;
+}
+
+/* Hiệu ứng gradient */
+.animate-gradient-text {
+  background-size: 300% 300%;
+  animation: gradient 4s ease infinite, shake-slow 3s ease infinite;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Hiệu ứng lắc chậm */
+@keyframes shake-slow {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  20% {
+    transform: translateX(-3px) rotate(-10deg);
+  }
+  40% {
+    transform: translateX(3px) rotate(10deg);
+  }
+  60% {
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  80% {
+    transform: translateX(3px) rotate(2deg);
+  }
+}
+.animate-shake-slow {
+  animation: shake-slow 3s ease infinite;
+}
+
+/* Hiệu ứng neon */
+.neon-glow {
+  box-shadow: 0 0 10px rgba(255, 213, 0, 0.5), 0 0 20px rgba(255, 196, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+.neon-glow:hover {
+  box-shadow: 0 0 15px rgba(255, 230, 0, 0.7), 0 0 30px rgba(255, 204, 0, 0.5),
+    0 0 45px rgba(255, 179, 0, 0.3);
+}
+
+/* Hiệu ứng bounce cho icon */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+}
+.animate-bounce {
+  animation: bounce 1.5s infinite;
+}
+
+/* Hiệu ứng pulse chậm */
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.relative input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #d4af37;
+  border-radius: 3px;
+  background-color: white;
+  transition: all 0.2s;
+}
+.relative input[type="checkbox"]:checked {
+  background-color: #d4af37;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+  background-size: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.relative:hover input[type="checkbox"] {
+  opacity: 1 !important;
+}
+
+@keyframes fadeInProduct {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#productPopup {
+  animation: fadeInProduct 0.3s ease-in-out;
+}
+
+#sizeOptions button {
+  transition: all 0.2s ease;
+}
+#productPopup {
+  overflow-y: auto;
+}
+
+.header-sales__title {
+  position: relative;
+}
+
+.sales-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.size-option {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.size-option:hover {
+  border-color: #d4af37;
+}
