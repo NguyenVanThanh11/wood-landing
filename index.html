@@ -11,35 +11,20 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./style.css" />
   <script>
-    !(function (f, b, e, v, n, t, s) {
-      if (f.fbq) return;
-      n = f.fbq = function () {
-        n.callMethod
-          ? n.callMethod.apply(n, arguments)
-          : n.queue.push(arguments);
-      };
-      if (!f._fbq) f._fbq = n;
-      n.push = n;
-      n.loaded = !0;
-      n.version = "2.0";
-      n.queue = [];
-      t = b.createElement(e);
-      t.async = !0;
-      t.src = v;
-      s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s);
-    })(
-      window,
-      document,
-      "script",
-      "https://connect.facebook.net/en_US/fbevents.js"
-    );
-    fbq("init", "1053108123315151");
-    fbq("track", "PageView");
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1053108123315151'); // Thay bằng ID Pixel của bạn
+    fbq('track', 'PageView');
   </script>
   <noscript>
-    <img height="1" width="1" style="display: none"
-      src="https://www.facebook.com/tr?id=1053108123315151&ev=PageView&noscript=1" />
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1053108123315151&ev=PageView&noscript=1"/>
   </noscript>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYWMQ6EXN7"></script>
@@ -597,7 +582,7 @@
 
         <button type="submit"
           class="w-full bg-red-600 hover:bg-red-700 text-white py-2 md:py-3 rounded-lg font-bold text-lg transition-colors shadow-md hover:shadow-lg">
-          ĐẶT MUA NGAY <i class="fas fa-arrow-right ml-2"></i>
+          ĐẶT HÀNG NGAY <i class="fas fa-arrow-right ml-2"></i>
         </button>
 
       </form>
@@ -1004,6 +989,20 @@
       return;
     }
 
+    
+  function formatDateTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const year = now.getFullYear();
+  
+  return `${hours}:${minutes}:${seconds} ${day}/${month}/${year}`;
+}
+
+
     // Prepare data object
     const data = {
       name: formData.get("name"),
@@ -1025,10 +1024,11 @@
         }
         return info;
       }).join("\n"),
+      submitTime: formatDateTime()
     };
 
     fetch(
-      "https://script.google.com/macros/s/AKfycbz-oY7Ym7WlJZI0E6RT7ebPitg8yo_pYzilZ1LZaO1Y-yb417FIt91ANyWx7H62dKk7/exec",
+      "https://script.google.com/macros/s/AKfycbwNlwruoVQZkYJSSHmeqC2UtITQg3HoaRaLs_emWVrklzV07LUxKsNMhNPWdp23AVI_/exec",
       {
         method: "POST",
         body: JSON.stringify(data),
@@ -1046,6 +1046,11 @@
       e.target.reset();
 
       fbq("track", "Lead"); // track tới pixel meta
+
+      fbq('track', 'Lead', {
+      value: 3559000, // Giá trị đơn hàng (nếu có)
+      currency: 'VND'
+    });
     });
   });
 
